@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ stockdata.firstname }} {{ stockdata.lastname }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{ stockdata.firstname }} {{ stockdata.lastname }}</h1>
+    
+    <p>Phone: {{ stockdata.phone }}</p>
+    <p>Member since: {{ stockdata.joined_date }}</p>
+
+    <p>Back to <a href="/stock">Members</a></p>
+  
+{% endblock %}

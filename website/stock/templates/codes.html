@@ -1,0 +1,19 @@
+<h1>{{ c }}</h1>
+
+<table border="5">
+    <tr>
+        <th>Action</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+    {% for i in view %}
+    <tr>
+        <td>{{ i.action }}</td>
+        <td>{{ i.sname }}</td>
+        <td>{{ i.sprice }}</td>
+        <td>{{ i.sqty }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>Back to <a href="/viewcode">All codes</a></p>

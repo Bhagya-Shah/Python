@@ -1,0 +1,25 @@
+{% load mathfilters %}
+
+<table border="5">
+    <tr>
+        <th>Code</th>
+        <th>Action</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+    {% for i in stocks %}
+    <tr>
+        <td>{{i.code}}</td>
+        <td>{{ i.action }}</td>
+        <td>{{ i.sname }}</td>
+        <td>{{ i.sprice }}</td>
+        <td>{{ i.sqty }}</td>
+        {% with a=i.sprice b=i.sqty %}
+        <td>{{ a|mul:b }}</td>
+        {% endwith %}
+    </tr>
+    {% endfor %}
+</table>
+<a href="/adddata">More Trades</a><br><br>
+<a href="/viewcode">All Code</a><br><br>

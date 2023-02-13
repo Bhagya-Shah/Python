@@ -1,0 +1,13 @@
+{% for i in allcodes %}
+{{ i }}
+<br>
+{% endfor %}
+<h1>Members</h1>
+  
+<ul>
+  {% for x in allcodes %}
+    <li><a href="codes/{{x}}">{{ x }}</a> </li>
+  {% endfor %}
+</ul>
+
+<a href="/adddata">Add data</a>

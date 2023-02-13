@@ -1,0 +1,20 @@
+<form action="" method="POST">
+    {% csrf_token %}
+    <!-- Date   :  <input type="date" name="date" id=""> -->
+    <br><br>    
+    Code   :  <input type="text" name="code" id="">
+    <br><br>
+    Stock Name   :  <input type="text" name="stockname" id="">
+    <br><br>
+    Stock Price  :  <input type="number" name="price">
+    <br><br>
+    Stock Quantity  :  <input type="number" name="quantity">
+    <br><br>
+    <button type="submit" name="buy" value="buy">&nbsp;Buy</button>
+    <button type="submit" name="sell" value="sell">&nbsp;Sell</button>
+</form>
+{% for message in messages %}
+<h3>{{message}}</h3>
+{% endfor %}
+<br><br>
+<a href="/trades">All trades</a>
