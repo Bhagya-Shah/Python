@@ -10,7 +10,8 @@ class Stockdata(models.Model):
         return f"{self.firstname} {self.lastname}"
     
 class Tradedata(models.Model):
-    code=models.CharField(max_length=100,null=True)
+    id=models.IntegerField(primary_key=True)
+    code=models.CharField(max_length=100)
     action=models.CharField(max_length=100)
     sname=models.CharField(max_length=200)
     sprice=models.IntegerField()

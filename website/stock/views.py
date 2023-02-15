@@ -5,6 +5,28 @@ from .models import Stockdata
 from .models import Tradedata
 from django.contrib import messages
 import mathfilters
+import sqlite3
+import sqlite3
+import pandas as pd
+
+# # Connect to the database
+# conn = sqlite3.connect("db.sqlitr3.db")
+
+# # Define the SQL query
+# sql_query = "SELECT * FROM dataa GROUP BY sname;"
+
+# # Read the result of the query into a Pandas DataFrame
+# df = pd.read_sql_query(sql_query, conn)
+
+# # Perform some action on the DataFrame
+# df["sqty"] = df["sqty"] * 2
+
+# # Update the database with the modified data
+# df.to_sql("dataa", conn, if_exists="replace", index=False)
+
+# # Commit the changes and close the connection
+# conn.commit()
+# conn.close()
 
 def stock(request):
     data=Stockdata.objects.all().values()
@@ -78,12 +100,22 @@ def codes(request,code):
     return HttpResponse(template.render(context,request))
 
 
-# def netpos(request,code):
-#     data=Tradedata.objects.filter(code=code).values()
-#     # data=Tradedata.objects.raw("SELECT stock, SUM(CASE WHEN order_type = 'Buy' THEN quantity ELSE -quantity END) as remaining_quantity FROM trades GROUP BY stock")
-#     template=loader.get_template('netpos.html')
-#     context={
-#         'c':code,
-#         'view':data
-#     }
-    # return HttpResponse(template.render(context,request))
+def netpos(request,code):
+    print(code)
+    # data=Tradedata.objects.filter(code=col).values()
+    data=Tradedata.objects.raw(f"SELECT *, SUM(CASE WHEN action='BUY' THEN +sqty ELSE -sqty END) as net FROM dataa WHERE code='{code}' GROUP BY sname HAVING net!=0")
+    template=loader.get_template('netpos.html')
+    context={
+        'c':code,
+        'view':data
+    }
+    print(data)
+    return HttpResponse(template.render(context,request))
+
+
+def ledger(request,code):
+    pass
+
+
+def buysell(request,code):
+    print(code)

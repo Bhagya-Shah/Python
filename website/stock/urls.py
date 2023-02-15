@@ -9,5 +9,5 @@ urlpatterns = [
     path('viewcode/',views.viewcode,name='viewcode'),
     path('stock/details/<int:id>', views.details, name='details'),
     path('viewcode/codes/<str:code>', views.codes, name='codes'),
-    # path('viewcode/netpos/<str:code>', views.netpos, name='netpos'),
+    path('viewcode/netpos/<str:code>', views.netpos, name='netpos'),
 ]
